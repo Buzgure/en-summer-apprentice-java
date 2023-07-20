@@ -1,6 +1,6 @@
-package com.endava.apprenticeProject.Repository;
+package com.endava.apprenticeProject.repository;
 
-import com.endava.apprenticeProject.Model.Customer;
+import com.endava.apprenticeProject.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

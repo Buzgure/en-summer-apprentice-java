@@ -1,7 +1,7 @@
-package com.endava.apprenticeProject.Controller;
+package com.endava.apprenticeProject.controller;
 
-import com.endava.apprenticeProject.Model.Customer;
-import com.endava.apprenticeProject.Service.CustomerServiceImpl;
+import com.endava.apprenticeProject.model.Customer;
+import com.endava.apprenticeProject.service.CustomerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,9 +18,9 @@ public class CustomerController {
     public List<Customer> getALlCustomers(){
         return customerService.getAllCustomers();
     }
-    @PostMapping("/customer")
+    @PostMapping("/addCustomer")
     public Customer addCustomer(@RequestBody Customer customer){
-        return customerService.saveCustomers(customer);
+        return customerService.saveCustomer(customer);
     }
 
 }

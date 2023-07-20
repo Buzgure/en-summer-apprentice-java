@@ -1,7 +1,7 @@
-package com.endava.apprenticeProject.Service;
+package com.endava.apprenticeProject.service;
 
-import com.endava.apprenticeProject.Model.Customer;
-import com.endava.apprenticeProject.Repository.CustomerRepository;
+import com.endava.apprenticeProject.model.Customer;
+import com.endava.apprenticeProject.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,7 @@ public class CustomerServiceImpl {
         return customerRepository.findAll();
     }
 
-    public Customer saveCustomers(Customer customer){
+    public Customer saveCustomer(Customer customer){
         return customerRepository.save(customer);
     }
 

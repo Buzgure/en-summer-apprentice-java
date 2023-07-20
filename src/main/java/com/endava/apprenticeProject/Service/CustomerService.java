@@ -1,4 +1,4 @@
-package com.endava.apprenticeProject.Service;
+package com.endava.apprenticeProject.service;
 
 public interface CustomerService {
 

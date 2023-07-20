@@ -1,4 +1,4 @@
-package com.endava.apprenticeProject.Model;
+package com.endava.apprenticeProject.model;
 
 import jakarta.persistence.*;
 

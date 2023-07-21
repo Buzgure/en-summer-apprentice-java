@@ -29,11 +29,14 @@ public class EventServiceImpl implements EventService{
     }
 
     @Override
-    public List<Event> sortByDateAndPrice() {
+    public List<Event> sortByDate() {
+        return eventRepository.findAll().stream().sorted(Comparator.comparing(Event::getStartDate)).collect(Collectors.toList());
+    }
+    public List<Event> sortByPrice(){
         List<TicketCategory> tickets = ticketCategoryRepository.findAll();
-        return eventRepository.findAll().stream().sorted(Comparator.comparing(Event::getStartDate)
-                .thenComparing(event -> tickets.stream().filter(ticket-> Objects.equals(ticket.getEvent().getId(), event.getId())).findFirst().map(TicketCategory::getPrice)
-                        .orElse(Float.MAX_VALUE))).collect(Collectors.toList());
+        return eventRepository.findAll().stream().sorted(Comparator.comparing(event -> tickets.stream()
+                .filter(ticket -> Objects.equals(ticket.getEvent().getId(),event.getId())).findFirst()
+                .map(TicketCategory::getPrice).orElse(Float.MAX_VALUE))).collect(Collectors.toList());
     }
 
     @Override
@@ -62,3 +65,5 @@ public class EventServiceImpl implements EventService{
         eventRepository.delete(event);
     }
 }
+//.thenComparing(event -> tickets.stream().filter(ticket-> Objects.equals(ticket.getEvent().getId(), event.getId())).findFirst().map(TicketCategory::getPrice)
+//        .orElse(Float.MAX_VALUE))).collect(Collectors.toList())

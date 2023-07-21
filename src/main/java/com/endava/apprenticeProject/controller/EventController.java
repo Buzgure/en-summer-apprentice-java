@@ -19,9 +19,13 @@ public class EventController {
     @GetMapping("/events")
     public List<Event> getAllEvents(){return eventService.showAllEvents();}
 
-    @GetMapping("/sortByDateAndPrice")
-    public List<Event> getEventsSortedByDateAndPrice(){
-        return eventService.sortByDateAndPrice();
+    @GetMapping("/events/sorted")
+    public List<Event> getEventsSortedByDate(){
+        return eventService.sortByDate();
+    }
+    @GetMapping("/events/sorted/byPrice")
+    public List<Event> getEventsSortedByPrice(){
+        return eventService.sortByPrice();
     }
 
     @PostMapping("/addEvent")

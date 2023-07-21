@@ -3,10 +3,7 @@ package com.endava.apprenticeProject.controller;
 import com.endava.apprenticeProject.model.Event;
 import com.endava.apprenticeProject.service.EventServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +19,11 @@ public class EventController {
     @GetMapping("/sortByDateAndPrice")
     public List<Event> getEventsSortedByDateAndPrice(){
         return eventService.sortByDateAndPrice();
+    }
+
+    @PostMapping("/addEvent")
+    public Event addEvent(@RequestBody Event event){
+        return eventService.saveEvent(event);
     }
 
 }

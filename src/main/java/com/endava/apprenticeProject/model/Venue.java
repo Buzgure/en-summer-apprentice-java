@@ -20,14 +20,16 @@ public class Venue implements Serializable {
     @Column(name = "Capacity")
     private int capacity;
 
-    public Venue() {
-    }
 
     public Venue(Long id, String location, String type, int capacity) {
         this.id = id;
         this.location = location;
         this.type = type;
         this.capacity = capacity;
+    }
+
+    public Venue() {
+
     }
 
     public Long getId() {

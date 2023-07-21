@@ -16,7 +16,7 @@ public class Event implements Serializable {
     @JoinColumn(name = "VenueID")
     private Venue venue;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "EventTypeID")
     private EventType eventType;
 

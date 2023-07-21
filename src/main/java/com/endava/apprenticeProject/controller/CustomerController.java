@@ -10,9 +10,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1")
 public class CustomerController {
-    @Autowired
-    private CustomerServiceImpl customerService;
 
+    private final CustomerServiceImpl customerService;
+    @Autowired
+    public CustomerController(CustomerServiceImpl customerService) {
+        this.customerService = customerService;
+    }
 
     @GetMapping("/customers")
     public List<Customer> getALlCustomers(){

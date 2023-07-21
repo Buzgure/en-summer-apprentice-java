@@ -17,7 +17,6 @@ public class Customer implements Serializable {
     @Column(name = "Email")
     private String email;
 
-
     public Customer() {
     }
 

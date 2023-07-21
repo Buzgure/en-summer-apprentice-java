@@ -10,8 +10,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1")
 public class EventController {
-    @Autowired
-    private EventServiceImpl eventService;
+    private final EventServiceImpl eventService;
+
+    public EventController(EventServiceImpl eventService) {
+        this.eventService = eventService;
+    }
 
     @GetMapping("/events")
     public List<Event> getAllEvents(){return eventService.showAllEvents();}

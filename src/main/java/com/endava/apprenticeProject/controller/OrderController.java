@@ -28,5 +28,6 @@ public class OrderController {
     public Order saveOrder(@RequestParam Long eventId,@RequestParam Long ticketCategoryId, @RequestParam int numberOfTickets) {
 
         return orderService.addOrder(eventId, ticketCategoryId, numberOfTickets);
+
     }
 }

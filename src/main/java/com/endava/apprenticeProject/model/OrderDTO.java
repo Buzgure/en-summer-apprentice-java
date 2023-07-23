@@ -2,23 +2,29 @@ package com.endava.apprenticeProject.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
+
+@Entity
+@Table(name = "OrderDTO")
 public class OrderDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "CustomerID")
-    private Customer customer;
 
-    @ManyToOne
-    @JoinColumn(name = "EventID")
-    private Event event;
+    @Column(name = "CustomerID")
+    private Long customerId;
 
-    @ManyToOne
-    @JoinColumn(name = "TicketCategoryID")
-    private TicketCategory ticketCategory;
+    @Column(name = "EventID")
+    private Long eventId;
+
+    @Column(name = "TicketCategoryID")
+    private Long ticketCategoryId;
+
+    @Column(name = "NumberOfTickets")
+    private int numberOfTickets;
 
 
 }

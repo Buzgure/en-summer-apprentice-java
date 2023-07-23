@@ -4,15 +4,13 @@ import com.endava.apprenticeProject.model.Order;
 import com.endava.apprenticeProject.service.OrderService;
 import com.endava.apprenticeProject.service.OrderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
 @RestController
-@RequestMapping(name = "/api/v1")
+@RequestMapping("/api/v1")
 public class OrderController {
 
     private final OrderServiceImpl orderService;
@@ -21,8 +19,14 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @GetMapping(name = "/orders")
+    @GetMapping("/orders")
     public List<Order> getAllOrders(){
         return orderService.getAllOrders();
+    }
+
+    @PostMapping("/orders/add")
+    public Order saveOrder(@RequestParam Long eventId,@RequestParam Long ticketCategoryId, @RequestParam int numberOfTickets) {
+
+        return orderService.addOrder(eventId, ticketCategoryId, numberOfTickets);
     }
 }

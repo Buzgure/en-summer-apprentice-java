@@ -9,4 +9,6 @@ public interface OrderService {
     Order updateOrder(Order order);
 
     void deleteOrder(Order order);
+
+    Order addOrder(Long eventId, Long ticketCategoryId, int numberOfTickets);
 }

@@ -8,6 +8,6 @@ public interface EventService {
      List<Event> showAllEvents();
      List<Event> sortByDate();
      List<Event> sortByPrice();
-     List<Event> searchbyName(String name);
-     List<Event> filterByType(String type);
+
+     List<Event> showSortedEvents(Long venueId, String eventTypeName);
 }

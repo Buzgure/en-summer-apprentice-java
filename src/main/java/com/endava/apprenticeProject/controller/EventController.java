@@ -17,16 +17,19 @@ public class EventController {
     }
 
     @GetMapping("/events")
-    public List<Event> getAllEvents(){return eventService.showAllEvents();}
+    public List<Event> getAllEvents(@RequestParam(required = false) Long venueId, @RequestParam(required = false) String eventType)
+    {
+        return eventService.showSortedEvents(venueId, eventType);
+    }
 
-    @GetMapping("/events/sorted")
-    public List<Event> getEventsSortedByDate(){
-        return eventService.sortByDate();
-    }
-    @GetMapping("/events/sorted/byPrice")
-    public List<Event> getEventsSortedByPrice(){
-        return eventService.sortByPrice();
-    }
+//    @GetMapping("/events/sorted")
+//    public List<Event> getEventsSortedByDate(){
+//        return eventService.sortByDate();
+//    }
+//    @GetMapping("/events/sorted/byPrice")
+//    public List<Event> getEventsSortedByPrice(){
+//        return eventService.sortByPrice();
+//    }
 
     @PostMapping("/addEvent")
     public Event addEvent(@RequestBody Event event){

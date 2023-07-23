@@ -40,17 +40,12 @@ public class EventServiceImpl implements EventService{
     }
 
     @Override
-    public List<Event> searchbyName(String name) {
+    public List<Event> showSortedEvents(Long venueId, String eventTypeName) {
+        var allEvents = eventRepository.findAll();
+        var typeName = allEvents.stream().filter(e -> e.getEventType().getEventTypeName().equals(eventTypeName));
 
-        return eventRepository.findAll().stream().filter(event -> event.getEventName().equals(name)).collect(Collectors.toList());
-
-    }
-
-    @Override
-    public List<Event> filterByType(String type) {
-        return null;
-
-
+        return eventRepository.findAll().stream().filter(event -> venueId == null || event.getVenue().getId().equals(venueId))
+                .filter(event -> eventTypeName == null || event.getEventType().getEventTypeName().equals(eventTypeName)).toList();
     }
 
     public Event saveEvent(Event event){
@@ -65,5 +60,3 @@ public class EventServiceImpl implements EventService{
         eventRepository.delete(event);
     }
 }
-//.thenComparing(event -> tickets.stream().filter(ticket-> Objects.equals(ticket.getEvent().getId(), event.getId())).findFirst().map(TicketCategory::getPrice)
-//        .orElse(Float.MAX_VALUE))).collect(Collectors.toList())
